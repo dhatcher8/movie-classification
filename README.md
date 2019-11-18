@@ -167,6 +167,18 @@ As seen above, we ran tests on multiple different models to determine what the b
 
 After all of our trials, it seemed as if the more we strayed from our original model, the worse the loss became, while the accuracy failed to get any better. We found that adding more filters didn't positively impact our model, while decreasing the number of filters didn't negatively impact our model. Based on this, we are fairly confident that most of the genre determination can be made from the more basic and vague shapes instead of the more specific details. Knowing this could be very helpful in the future when deciding whether the space/time tradeoff is worth it when considering adding more filters to a network similar to ours. This information could also be used to hypothesize about how feeling is actually conveyed through images. In our testing, we also found that adding additional layers did little to help us, and after a certain point, more epochs were no longer helpful either. The one model that we saw might have potentioal was the original model but using a filter size of 5x5 instead of 3x3. Though this was an unexpected development, we decided to run with it as very few other models use 5x5 filters in this type of classification. 
 
+# Final Results
+
+Running with what seemed to be our best model from testing, we wanted to train the same model with a larger dataset. By doing this we were hoping that an increased number of movie data would produce a better training set, and in turn would increase our prediction accuracy.
+
+![10KNumbers](dataset/images/10kNumbers.PNG)
+![10KAccuracy](dataset/images/10kAccuracy.PNG)
+![10KLoss](dataset/images/10kLoss.PNG)
+
+With our final model, we found that our accuracy was maxing out just shy of 90 percent, very similar to all of our trial models with less data. We also found that we only had a loss of 27.5 percent, which was about the best our training data got as well. From the final results, there wasn't much evidence that an increased number of images changed the accuracy, or efficiency of our model, while being twice as slow. As such, we recommend training on a dataset of around 5,000 images as of now.
+
+While our final results with a larger dataset didn't garner better results, 90 percent accuracy with a 27.5 percent loss is a very successful model when considering multi valued classification with a total of 20 classes. 
+
 ## Evaluation of our approach with F-beta
 
 Since our dataset does not have a balanced number of examples of each class, as shown in the Approach, nor do we perform binary or multi-class classification, an appropriate measure of the accuracy of our results was deemed to be the F-beta metric. This is related to the F1 score/measure, in which the average of recall and precision is calculated to find the harmonic mean. This is the prefered method of evaluating performance of an imbalanced dataset.
@@ -189,19 +201,6 @@ The results of the tests are as follows:
 
 From the example of results above, we can see that the big factors of change were increasing the number of epochs and remaining with the sigmoid activation, which worked better for multi-label classification models. This can be taken a step further by changing the beta values for similar testing.
 
-
-# Final Results
-
-Running with what seemed to be our best model from testing, we wanted to train the same model with a larger dataset. By doing this we were hoping that an increased number of movie data would produce a better training set, and in turn would increase our prediction accuracy.
-
-![10KNumbers](dataset/images/10kNumbers.PNG)
-![10KAccuracy](dataset/images/10kAccuracy.PNG)
-![10KLoss](dataset/images/10kLoss.PNG)
-
-With our final model, we found that our accuracy was maxing out just shy of 90 percent, very similar to all of our trial models with less data. We also found that we only had a loss of 27.5 percent, which was about the best our training data got as well. From the final results, there wasn't much evidence that an increased number of images changed the accuracy, or efficiency of our model, while being twice as slow. As such, we recommend training on a dataset of around 5,000 images as of now.
-
-While our final results with a larger dataset didn't garner better results, 90 percent accuracy with a 27.5 percent loss is a very successful model when considering multi valued classification with a total of 20 classes. 
-
 ## Possible Improvements Discussion
 
 Looking at our results, there are a few things that could have negatively impacted the accuracy of our neural network. In reference to the graph of movies per genre seen in the approach overview section above (Figure 2), you can see that the number of movies per genre is not standardized. Because some genres such as Drama and Comedy have a disproportionate number of movies compared to the genres of say Westerns and History, our model is trained to classify more movies as such. While CNNs are better models at correcting for the imbalance of data, there will always be some disturbance. Because of this, if we fed a Western into our model, it has a higher chance of mislabeling it as such. In future studies, if we were able to stablize the number of movies per genre, we would likely get better predictions. 
@@ -211,8 +210,6 @@ Another possible hinderance of our model is the size images that we are using. B
 # Conclusion
 
 After analyzing our results, we were able to make significant progress on top of other attempts at solving the same problem. The size of our dataset gave us more information to work with, which led to more accurate classifications. But our convolutional neural network was also different than any we've seen thus far. 
-
---Add more about why our model is different--
 
 By intially following the VGG type structure, we were able to build off of an already great classifier. We took characteristics of that type of model and changing parameters we felt could yield better outcomes, and that proved to be the case from the results shown above. Our model classifies a genre correctly 9 out of 10 times, which is very good considering we are using multiple genres per movie.
 
