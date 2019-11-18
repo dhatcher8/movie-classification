@@ -126,8 +126,34 @@ Finally our model is optimized using Tensorflow's Adam Optimization algorithm, w
 Based on our understanding of Convolutional Neural Networks, we wanted to adjust the parameters and layers of our base model in order to achieve different results to learn about our model. Based on tensorflow.keras.conv2D, we analyzed each parameter including filter size, number of filters, activation, and manipulated those that we thought would have the most significant impact on our model [3].
 
 -Original Model
--Half number of filters
--5x5 filters
+![Model_Accuracy](dataset/images/Model_Accuracy.png)
+![ModelLoss.png](dataset/images/ModelLoss.png)
+
+-5Epochs4LayersAdamaxOptimizerAccuracy
+![5Epochs4LayersSoftmaxActivationFunctionNumbers](dataset/images/5Epochs4LayersSoftmaxActivationFunctionNumbers.png)
+![5Epochs4LayersSoftmaxActivationFunctionAccuracy](dataset/images/5Epochs4LayersSoftmaxActivationFunctionAccuracy.png)
+![5Epochs4LayersSoftmaxActivationFunctionLoss](dataset/images/5Epochs4LayersSoftmaxActivationFunctionLoss.png)
+
+-4 Layers with 10 Epochs
+![10Epochs4LayersNumbers](dataset/images/10Epochs4LayersNumbers.PNG)
+![10Epochs4LayersAccuracy](dataset/images/10Epochs4LayersAccuracy.PNG)
+![10Epochs4LayersLoss](dataset/images/10Epochs4LayersLoss.PNG)
+
+-5x5ConvolutionalNumbers
+![5x5ConvolutionalNumbers](dataset/images/5x5ConvolutionalNumbers.PNG)
+![5x5ConvolutionalAccuracy](dataset/images/5x5ConvolutionalAccuracy.PNG)
+![5x5ConvolutionalLoss](dataset/images/5x5ConvolutionalLoss.PNG)
+
+-5Epochs5LayersNumbers.PNG
+![5Epochs5LayersNumbers.PNG](dataset/images/5Epochs5LayersNumbers.PNG)
+![5Epochs5LayersAccuracy.png](dataset/images/5Epochs5LayersAccuracy.png)
+![5Epochs5LayersLoss.png](dataset/images/5Epochs5LayersLoss.png)
+
+-8-64Filters
+![8-8-64FiltersNumbers.PNG](dataset/images/8-64FiltersNumbers.PNG)
+![8-64FiltersAccuracy.png](dataset/images/8-64FiltersAccuracy.PNG)
+![8-64FiltersLoss.png](dataset/images/8-64FiltersLoss.PNG)
+
 
 # Analysis and Discussion
 
