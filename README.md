@@ -185,8 +185,6 @@ Since our dataset does not have a balanced number of examples of each class, as 
 
 THe idea of postive and negative classes (for correct/incorrect model predictions) only make sense for a binary classification problem, and thus we need to introduce wieghts to how important recall is in comparison to precision, in that each class is compared in a one vs. all others manner. 
 
-![Fbeta](dataset/images/Fbetaformula.png)
-
 A common weight that is used for these problems is 2, in which recall is valued twice as highly as precision. As we also care more about recall, we will also set `beta = 2` since we want the model to be as accurate is possible. Thus we are looking for F-beta around 1 for our model, to reach the harmonic mean. 
 
 The results of the tests are as follows:
