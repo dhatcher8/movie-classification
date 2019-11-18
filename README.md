@@ -7,19 +7,21 @@ Drew Hatcher, Jahin Ahmed, Nikhil Rajan, Parker Bryant, and Zach Hussin
 Movie posters can provide a lot of information for people going to see movies. Apart from the cast and crew, visual features and structural cues are guiding factors in classifying a movie genre. However since the idea for posters was first conceived, we have have a vast range of styles, ranging anywhere from minimalist graphic design to intricate composite photographs.To better understand the design choices behind movie posters, our project aims to create a classification model that is able to predict a movie’s genre based on features that it’s poster possesses. Prediction tools of this nature can be applied to areas such as detection of unwanted image content on platforms, categorising videos based on their thumbnails, and perhaps falicitating data for a discrinimator neutral network of a GANs in order to verfiy fake content. 
 
 ![Goal](dataset/images/JohnWickGenres.jpg)
+Figure 1
 
 # Approach Overview
 
 Our goal in this project was to create a supervised learning model that would accurately classify a movie's genre based on its poster. In order to do this, we needed to obtain genre classification and poster images for a significant amount of movies. We found a dataset of movie data that was harvested from TMDB and from that large dataset, we preprocessed the data to cut away unnecessary information and to fit the parameters of our model. From our preprocessed data, we created a smaller subset of the data in order to test potential models with efficiency. After extensive research, it was clear that convolutional neural networks are the most used and effective supervised learning technique for classify images. Other methods including dimensionality reduction algorithms like PCA were found to have certain pitfalls when dealing with data like ours in which there is a high likelyhood that our dataset will be imbalanced with more of genres like drama and comedy than western films, as shown in the dataset below. Implementing these methods would train the model to find those genres better, rather than being a good classifier for all genres.
 
 ![MoviesperGenre](dataset/images/MoviesPerGenre.jpg)
+Figure 2
 
 
 Finding this, we decided to create a cnn and then run experiments changing a single variable at a time to hone in on the overall most efficient and accurate classification model.
 
 # Data Collection
 
-After locking in on our problem, the next step in solving our problem was to find data around and relating to our project that we could use to build a model. Because of the specificity of our problem, there wasn't a bulk of readily available data from big name sources, so we turned to Kaggle, which is an online community dedicated to machine learning initiatives where a wide variety of datasets are collected and made public to the community. From Kaggle, we were able to find a catch all dataset for a set of over 40,000 movies. This dataset, called "The Movies Dataset" is described as an ensemble of data collected from TMDB using their public API. The dataset has almost 68,000 downloads and a usablity rating of 8.2. We decided the dataset would be a great fit for our problem based on the credibility of the source, the categorical data collected, and the sheer size of the set. 
+After locking in on our problem, the next step in solving our problem was to find data around and relating to our project that we could use to build a model. Because of the specificity of our problem, there wasn't a bulk of readily available data from big name sources, so we turned to Kaggle, which is an online community dedicated to machine learning initiatives where a wide variety of datasets are collected and made public to the community. From Kaggle, we were able to find a catch all dataset for a set of over 40,000 movies. This dataset, called "The Movies Dataset" is described as an ensemble of data collected from TMDB using their public API [1]. The dataset has almost 68,000 downloads and a usablity rating of 8.2. We decided the dataset would be a great fit for our problem based on the credibility of the source, the categorical data collected, and the sheer size of the set. 
 
 The dataset we used can be found here: [The Movies Dataset](https://www.kaggle.com/rounakbanik/the-movies-dataset)
 
@@ -69,10 +71,12 @@ Understanding what we knew about locally hosting images, in terms of overall tim
 During our poster collection process, it came to our attention that there wasn't a standard height for the images that we were collecting. This could cause problems in our convolutional neural network, because a standard size is required for the model, and even if it wasn't, non standard data could throw off the results of our filtering in our convolutional layers. Thus, we decided in order to standardized our images, we would compress each image such that it's height was also 185 pixels. 
 
 ![ExamplePlot](dataset/images/ImagePlotExample.png)
+Figure 3
 
 This way, shapes and details were still being captured similarly accross posters and it shouldn't affect the performance of our network. To compress the images, we used a load image function that is a part of the tensorflow keras image preprocessing library. This function uses a nearest neighbor interpolation strategy that replaces a group of pixels with a single pixel based on neighboring pixels and the ratio of the new size to the original size. With our newly sized 185x185 images, we realized that any further dimensionality reduction was unnessesary and could be harmful to the accuracy of our model. We now had a 4D array of an approximate size (40000, 185, 185, 3) to use for our training, of which we split our 
 
 ![ConvolutionalLayer](dataset/images/convolutionalLayer.png) 
+Figure 4 [2]
 
 # Building the Convolutional Neural Network
 
@@ -113,8 +117,17 @@ model.add(Dense(20, activation='sigmoid'))
 The final layer uses `sigmoid` to produce a 20-element vector (for the 20 different genres) with prediction values ranging from 0 to 1 for each output class. This is prefered to the  `softmax activation` function as we have a multi-label classifier not a multi class classifier. 
 
 ![CNNGraphic](dataset/images/CNNmodel.jpeg)
+Figure 5 [4]
 
 Finally our model is optimized using Tensorflow's Adam Optimization algorithm, which is an extention of stochastic gradient decent, for reasons including speed of processing, more intuitive interpretation of the hyper-parameters, noise reduction, to name a few. 
+
+# Adjusting our Model
+
+Based on our understanding of Convolutional Neural Networks, we wanted to adjust the parameters and layers of our base model in order to achieve different results to learn about our model. Based on tensorflow.keras.conv2D, we analyzed each parameter including filter size, number of filters, activation, and manipulated those that we thought would have the most significant impact on our model [3].
+
+-Original Model
+-Half number of filters
+-5x5 filters
 
 # Analysis and Discussion
 
@@ -122,7 +135,7 @@ talk about our results and what they mean
 
 ## Possible Improvements
 
-Looking at our results, there are a few things that could have negatively impacted the accuracy of our neural network. In reference to the graph of movies per genre seen in the approach overview section above, you can see that the number of movies per genre is not standardized. Because some genres such as Drama and Comedy have a disproportionate number of movies compared to the genres of say Westerns and History, our model is trained to classify more movies as such. Because of this, if we fed a Western into our model, it has a higher chance of mislabeling it as such. In future studies, if we were able to stablize the number of movies per genre, we would likely get better predictions. 
+Looking at our results, there are a few things that could have negatively impacted the accuracy of our neural network. In reference to the graph of movies per genre seen in the approach overview section above (Figure 2), you can see that the number of movies per genre is not standardized. Because some genres such as Drama and Comedy have a disproportionate number of movies compared to the genres of say Westerns and History, our model is trained to classify more movies as such. Because of this, if we fed a Western into our model, it has a higher chance of mislabeling it as such. In future studies, if we were able to stablize the number of movies per genre, we would likely get better predictions. 
 
 Another possible hinderance of our model is the size images that we are using. Because of space and time constraints, we decided to work with 185x185 pixel images, but this could have slightly decreased our model's accuracy. The first reason is because we compressed multi sized portrait images into a standard square, which could have warped the shape of some posters in respect to other images, throwing off some of the filters we use in our convolutional layers. The second reason the image size is an issue is because some of our convolutional layers used a high amount of filters, which increasingly adds specificity to the filter. Because we are using lower quality images, filters with high specificity trying to identify precise shapes may not be able to classify these shapes as well. In turn, this could affect the probability that an image is of a certain genre, which could have led to slightly lower accuracies in our model. In the future, higher quality images can be used with the understanding that the model will take exponentially longer to train and test, and the memory required may be much harder to attain.
 
