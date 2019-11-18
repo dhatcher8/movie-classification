@@ -138,5 +138,14 @@ The reason our solution is important is because it has a implication for real wo
 
 # References
 
-[1] Simonyan, Karen, and Andrew Zisserman. “Very Deep Convolutional Networks for Large-Scale Image Recognition.” Sept. 2014, arXiv:1409.1556.
+[1] Banki, Rounak. “Kaggle.” The Movies Dataset, 2017, www.kaggle.com/rounakbanik/the-movies-dataset#movies_metadata.csv.
+
+[2] corochann. “Understanding Convolutional Layer.” CorochannNote, 11 June 2017, corochann.com/understanding-convolutional-layer-1227.html.
+
+[3] Rosebrock, Adrian. “Keras Conv2D and Convolutional Layers.” PyImageSearch, 31 Dec. 2018, www.pyimagesearch.com/2018/12/31/keras-conv2d-and-convolutional-layers/.
+
+[4] Saha, Sumit. “A Comprehensive Guide to Convolutional Neural Networks - the ELI5 Way.” Medium, Towards Data Science, 15 Dec. 2018, towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53.
+
+[5] Simonyan, Karen, and Andrew Zisserman. “Very Deep Convolutional Networks for Large-Scale Image Recognition.” Sept. 2014, arXiv:1409.1556.
+
 
