@@ -136,8 +136,8 @@ Based on our understanding of Convolutional Neural Networks, we wanted to adjust
 
 -4 Layers with 10 Epochs
 ![10Epochs4LayersNumbers](dataset/images/10Epochs4LayersNumbers.PNG)
-![10Epochs4LayersAccuracy](dataset/images/10Epochs4LayersAccuracy.PNG)
-![10Epochs4LayersLoss](dataset/images/10Epochs4LayersLoss.PNG)
+![10Epochs4LayersAccuracy](dataset/images/10Epochs4LayersAccuracy.png)
+![10Epochs4LayersLoss](dataset/images/10Epochs4LayersLoss.png)
 
 -5x5ConvolutionalNumbers
 ![5x5ConvolutionalNumbers](dataset/images/5x5ConvolutionalNumbers.PNG)
