@@ -161,11 +161,20 @@ Based on our understanding of Convolutional Neural Networks, we wanted to adjust
 ![8-64FiltersLoss.png](dataset/images/8-64FiltersLoss.PNG)
 
 
-# Results Analysis
+# Model Testing Analysis
 
 As seen above, we ran tests on multiple different models to determine what the best parameters of our model were. Our original base model performed well, having plateaued off at around 90 percent accuracy. For a first trial, we viewed this as a success, but wanted to see how much better we could do if we strayed from the norm slightly in different directions. Next we decided to test using 4 Convolutional Layers instead, which hit a loss of .27 and an accuracy of 89 percent. This showed that the final convolutional layer provided only the slightest bit of extra help, but very slim at that. We followed that by running 5 Epochs with 4 Convolutional Layers Using the Adamax Optimizer. 5 Epochs should theoretically have a lower accuracy, but with the Adamax Optimizer, the accuracy stayed very constant at around 89 percent again. We did see a spike in loss, upwards of .61, which isn't as good as previous. Comparing this to other trials at around 5 epochs, the Adamax Optimizer didn't seem to have much of an effect on our model. Next we ran the original trial with 5x5 convolutional filters instead of 3x3. Again, this modeled seemed to hit the 89.5 accuracy mark with a loss of .28, but it seemed that with the 5x5 filters, much fewer epochs were required for the accuracy and loss to begin to plateau. After this, we attempted to switch things up by only running 5 epochs on 5 Convolutional Layers, but no matter what we seemed to do, we still arrived at just above 89 percent accuracy again with a loss of 1. This loss was much greater than anything we'd had before, so we decided against this method completely. Finally we attempted to run 8 layers, each with 64 filters as a last attempt to adjust our model. Instead, we fell just shy of 89 percent with an adequate loss of .38. 
 
 After all of our trials, it seemed as if the more we strayed from our original model, the worse the loss became, while the accuracy failed to get any better. We found that adding more filters didn't positively impact our model, while decreasing the number of filters didn't negatively impact our model. Based on this, we are fairly confident that most of the genre determination can be made from the more basic and vague shapes instead of the more specific details. Knowing this could be very helpful in the future when deciding whether the space/time tradeoff is worth it when considering adding more filters to a network similar to ours. This information could also be used to hypothesize about how feeling is actually conveyed through images. In our testing, we also found that adding additional layers did little to help us, and after a certain point, more epochs were no longer helpful either. The one model that we saw might have potentioal was the original model but using a filter size of 5x5 instead of 3x3. Though this was an unexpected development, we decided to run with it as very few other models use 5x5 filters in this type of classification. 
+
+# Final Results
+
+Running with what seemed to be our best model from testing, we wanted to train the same model with a larger dataset. By doing this we were hoping that an increased number of movie data would produce a better training set, and in turn would increase our prediction accuracy.
+
+![10KNumbers](dataset/images/10KNumbers.PNG)
+![10KAccuracy](dataset/images/10KAccuracy.PNG)
+![10KLoss](dataset/images/10KLoss.PNG)
+
 
 ## Possible Improvements Discussion
 
