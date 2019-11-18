@@ -175,6 +175,9 @@ Running with what seemed to be our best model from testing, we wanted to train t
 ![10KAccuracy](dataset/images/10kAccuracy.PNG)
 ![10KLoss](dataset/images/10kLoss.PNG)
 
+With our final model, we found that our accuracy was maxing out just shy of 90 percent, very similar to all of our trial models with less data. We also found that we only had a loss of 27.5 percent, which was about the best our training data got as well. From the final results, there wasn't much evidence that an increased number of images changed the accuracy, or efficiency of our model, while being twice as slow. As such, we recommend training on a dataset of around 5,000 images as of now.
+
+While our final results with a larger dataset didn't garner better results, 90 percent accuracy with a 27.5 percent loss is a very successful model when considering multi valued classification with a total of 20 classes. 
 
 ## Possible Improvements Discussion
 
