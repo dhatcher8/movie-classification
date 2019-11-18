@@ -171,9 +171,9 @@ After all of our trials, it seemed as if the more we strayed from our original m
 
 Running with what seemed to be our best model from testing, we wanted to train the same model with a larger dataset. By doing this we were hoping that an increased number of movie data would produce a better training set, and in turn would increase our prediction accuracy.
 
-![10KNumbers](dataset/images/10KNumbers.PNG)
-![10KAccuracy](dataset/images/10KAccuracy.PNG)
-![10KLoss](dataset/images/10KLoss.PNG)
+![10KNumbers](dataset/images/10kNumbers.PNG)
+![10KAccuracy](dataset/images/10kAccuracy.PNG)
+![10KLoss](dataset/images/10kLoss.PNG)
 
 
 ## Possible Improvements Discussion
