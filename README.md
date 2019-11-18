@@ -71,32 +71,31 @@ Using Google's Tensorflow, we were able to build our neural network by supplying
 
 Although we did not use their model as our framework, we built a Sequential model following the VGG-type structure, with the same filter sizes followed by a max pooling layer, which we repeated with doubling the number of filters when each layer was added. Additional parameters we believed to be appropriate based on the structure and other research included the use of the Rectified Linear Unit as activation, for all layers except the final one to avoid saturation (an issue when using the sigmoid function, a nonlinear activation function):
 
-<details>
- <summary>Expand Code</summary>
- <p>
-  ```
-   model = Sequential()
-   model.add(Conv2D(16, (3,3), activation='relu', input_shape = X_train[0].shape))
-   model.add(BatchNormalization())
-   model.add(MaxPool2D(2,2))
-   model.add(Dropout(0.3))
+<details><summary>Expand Code</summary>
+<p>
+ 
+```model = Sequential()
+model.add(Conv2D(16, (3,3), activation='relu', input_shape = X_train[0].shape))
+model.add(BatchNormalization())
+model.add(MaxPool2D(2,2))
+model.add(Dropout(0.3))
 
-   model.add(Conv2D(32, (3,3), activation='relu'))
-   model.add(BatchNormalization())
-   model.add(MaxPool2D(2,2))
-   model.add(Dropout(0.3))
-
-   model.add(Conv2D(64, (3,3), activation='relu'))
-   model.add(BatchNormalization())
-   model.add(MaxPool2D(2,2))
-   model.add(Dropout(0.4))
-   .
-   .
-   .
-   .
-   .
-   model.add(Dense(20, activation='sigmoid'))
-   ```
+model.add(Conv2D(32, (3,3), activation='relu'))
+model.add(BatchNormalization())
+model.add(MaxPool2D(2,2))
+model.add(Dropout(0.3))
+ 
+model.add(Conv2D(64, (3,3), activation='relu'))
+model.add(BatchNormalization())
+model.add(MaxPool2D(2,2))
+model.add(Dropout(0.4))
+.
+.
+.
+.
+.
+model.add(Dense(20, activation='sigmoid'))
+```
   
  </p>
 </details>
