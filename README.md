@@ -103,9 +103,15 @@ model.add(Dense(20, activation='sigmoid'))
 
 The final layer uses `sigmoid` to produce a 20-element vector (for the 20 different genres) with prediction values ranging from 0 to 1 for each output class. This is prefered to the  `softmax activation` function as we have a multi-label classifier not a multi class classifier. 
 
+![CNNGraphic](dataset/images/CNNmodel.jpeg)
+
 Finally our model is optimized using Tensorflow's Adam Optimization algorithm, which is an extention of stochastic gradient decent, for reasons including speed of processing, more intuitive interpretation of the hyper-parameters, noise reduction, to name a few. The results of our model is shown as follows: -------SHOW RESULTS AND FINE TUNING-------
 
 # Analysis and Discussion
+
+talk about our results and what they mean
+
+talk about how we could have gotten better results (had a lot of certain types of genres, etc)
 
 # Conclusion
 
