@@ -120,7 +120,11 @@ Finally our model is optimized using Tensorflow's Adam Optimization algorithm, w
 
 talk about our results and what they mean
 
-talk about how we could have gotten better results (had a lot of certain types of genres, etc)
+## Possible Improvements
+
+Looking at our results, there are a few things that could have negatively impacted the accuracy of our neural network. In reference to the graph of movies per genre seen in the approach overview section above, you can see that the number of movies per genre is not standardized. Because some genres such as Drama and Comedy have a disproportionate number of movies compared to the genres of say Westerns and History, our model is trained to classify more movies as such. Because of this, if we fed a Western into our model, it has a higher chance of mislabeling it as such. In future studies, if we were able to stablize the number of movies per genre, we would likely get better predictions. 
+
+Another possible hinderance of our model is the size images that we are using. Because of space and time constraints, we decided to work with 185x185 pixel images, but this could have slightly decreased our model's accuracy. The first reason is because we compressed multi sized portrait images into a standard square, which could have warped the shape of some posters in respect to other images, throwing off some of the filters we use in our convolutional layers. The second reason the image size is an issue is because some of our convolutional layers used a high amount of filters, which increasingly adds specificity to the filter. Because we are using lower quality images, filters with high specificity trying to identify precise shapes may not be able to classify these shapes as well. In turn, this could affect the probability that an image is of a certain genre, which could have led to slightly lower accuracies in our model. In the future, higher quality images can be used with the understanding that the model will take exponentially longer to train and test, and the memory required may be much harder to attain.
 
 # Conclusion
 
