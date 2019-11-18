@@ -67,7 +67,7 @@ During our poster collection process, it came to our attention that there wasn't
 
 # Building the Convolutional Neural Network
 
-Using Google's Tensorflow, we were able to build our neural network by supplying it the parameters we desired for our model. We decided to follow the structure of the Oxford Visual Geometry Group (VGG), as it is proven to have effective for image classfication, most notably winning ImageNet's [Large Scale Visual Recognition Challenge](http://image-net.org/challenges/LSVRC/2014/results). The structure was obtained through a reigourous evalutaions of netowrks of increasing depth, showing that siginificant improvements can be seen by increasing the depth to 16-19 layers and using very small 3x3x1 filters for all convolutional layers to reduce the number of parameters. 
+Using Google's Tensorflow, we were able to build our neural network by supplying it the parameters we desired for our model. We decided to follow the structure of the Oxford Visual Geometry Group (VGG), as it is proven to have effective for image classfication, most notably winning ImageNet's [Large Scale Visual Recognition Challenge](http://image-net.org/challenges/LSVRC/2014/results). The structure was obtained through a reigourous evalutaions of netowrks of increasing depth, showing that siginificant improvements can be seen by increasing the depth to 16-19 layers and using very small 3x3x1 filters for all convolutional layers to reduce the number of parameters[1].
 
 Although we did not use their model as our framework, we built a Sequential model following the VGG-type structure, with the same filter sizes followed by a max pooling layer, which we repeated with doubling the number of filters when each layer was added. Additional parameters we believed to be appropriate based on the structure and other research included the use of the Rectified Linear Unit as activation, for all layers except the final one to avoid saturation (an issue when using the sigmoid function, a nonlinear activation function):
 
@@ -107,5 +107,5 @@ Finally our model is optimized using Tensorflow's Adam Optimization algorithm, w
 
 # References
 
-[1]Simonyan, Karen, and Andrew Zisserman. “Very Deep Convolutional Networks for Large-Scale Image Recognition.” Sept. 2014, arXiv:1409.1556.
+[1] Simonyan, Karen, and Andrew Zisserman. “Very Deep Convolutional Networks for Large-Scale Image Recognition.” Sept. 2014, arXiv:1409.1556.
 
