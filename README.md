@@ -1,6 +1,6 @@
 # Multi-Label Genre Classification of Movies From Their Posters
 
-Drew Hatcher, Jahin Ahmed, Nikhil Rajan, Parker Bryant, and Zach Hussin
+#### Drew Hatcher, Jahin Ahmed, Nikhil Rajan, Parker Bryant, and Zach Hussin
 
 # Problem Statement
 
