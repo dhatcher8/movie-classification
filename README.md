@@ -140,9 +140,9 @@ Based on our understanding of Convolutional Neural Networks, we wanted to adjust
 ![10Epochs4LayersLoss](dataset/images/10Epochs4LayersLoss.png)
 
 -5x5ConvolutionalNumbers
-![5x5ConvolutionalNumbers](dataset/images/5x5ConvolutionalNumbers.PNG)
-![5x5ConvolutionalAccuracy](dataset/images/5x5ConvolutionalAccuracy.PNG)
-![5x5ConvolutionalLoss](dataset/images/5x5ConvolutionalLoss.PNG)
+![5x5ConvolutionNumbers](dataset/images/5x5ConvolutionNumbers.PNG)
+![5x5ConvolutionAccuracy](dataset/images/5x5ConvolutionAccuracy.PNG)
+![5x5ConvolutionLoss](dataset/images/5x5ConvolutionLoss.PNG)
 
 -5Epochs5LayersNumbers.PNG
 ![5Epochs5LayersNumbers.PNG](dataset/images/5Epochs5LayersNumbers.PNG)
