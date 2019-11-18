@@ -125,31 +125,37 @@ Finally our model is optimized using Tensorflow's Adam Optimization algorithm, w
 
 Based on our understanding of Convolutional Neural Networks, we wanted to adjust the parameters and layers of our base model in order to achieve different results to learn about our model. Based on tensorflow.keras.conv2D, we analyzed each parameter including filter size, number of filters, activation, and manipulated those that we thought would have the most significant impact on our model [3].
 
--Original Model
+- Original Model From Above
+
 ![Model_Accuracy](dataset/images/Model_Accuracy.png)
 ![ModelLoss.png](dataset/images/ModelLoss.png)
 
--5Epochs4LayersAdamaxOptimizerAccuracy
-![5Epochs4LayersSoftmaxActivationFunctionNumbers](dataset/images/5Epochs4LayersSoftmaxActivationFunctionNumbers.png)
-![5Epochs4LayersSoftmaxActivationFunctionAccuracy](dataset/images/5Epochs4LayersSoftmaxActivationFunctionAccuracy.png)
-![5Epochs4LayersSoftmaxActivationFunctionLoss](dataset/images/5Epochs4LayersSoftmaxActivationFunctionLoss.png)
+- 4 Convolutional Layers with 10 Epochs
 
--4 Layers with 10 Epochs
 ![10Epochs4LayersNumbers](dataset/images/10Epochs4LayersNumbers.PNG)
 ![10Epochs4LayersAccuracy](dataset/images/10Epochs4LayersAccuracy.png)
 ![10Epochs4LayersLoss](dataset/images/10Epochs4LayersLoss.png)
 
--5x5ConvolutionalNumbers
+- 5 Epochs with 4 Convolutional Layers Using Adamax OptimizerAccuracy
+
+![5Epochs4LayersSoftmaxActivationFunctionNumbers](dataset/images/5Epochs4LayersSoftmaxActivationFunctionNumbers.png)
+![5Epochs4LayersSoftmaxActivationFunctionAccuracy](dataset/images/5Epochs4LayersSoftmaxActivationFunctionAccuracy.png)
+![5Epochs4LayersSoftmaxActivationFunctionLoss](dataset/images/5Epochs4LayersSoftmaxActivationFunctionLoss.png)
+
+- Original with 5 x 5 Convolutional Filters
+
 ![5x5ConvolutionNumbers](dataset/images/5x5ConvolutionNumbers.PNG)
 ![5x5ConvolutionAccuracy](dataset/images/5x5ConvolutionAccuracy.PNG)
 ![5x5ConvolutionLoss](dataset/images/5x5ConvolutionLoss.PNG)
 
--5Epochs5LayersNumbers.PNG
+- 5 Epochs with 5 Layers
+
 ![5Epochs5LayersNumbers.PNG](dataset/images/5Epochs5LayersNumbers.PNG)
 ![5Epochs5LayersAccuracy.png](dataset/images/5Epochs5LayersAccuracy.png)
 ![5Epochs5LayersLoss.png](dataset/images/5Epochs5LayersLoss.png)
 
--8-64Filters
+- 8 Conv2D Layers with 64 Filters
+
 ![8-8-64FiltersNumbers.PNG](dataset/images/8-64FiltersNumbers.PNG)
 ![8-64FiltersAccuracy.png](dataset/images/8-64FiltersAccuracy.PNG)
 ![8-64FiltersLoss.png](dataset/images/8-64FiltersLoss.PNG)
