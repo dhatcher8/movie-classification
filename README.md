@@ -105,4 +105,7 @@ The final layer uses `sigmoid` to produce a 20-element vector (for the 20 differ
 
 Finally our model is optimized using Tensorflow's Adam Optimization algorithm, which is an extention of stochastic gradient decent, for reasons including speed of processing, more intuitive interpretation of the hyper-parameters, noise reduction, to name a few. The results of our model is shown as follows: -------SHOW RESULTS AND FINE TUNING-------
 
+# References
+
+[1]Simonyan, Karen, and Andrew Zisserman. “Very Deep Convolutional Networks for Large-Scale Image Recognition.” Sept. 2014, arXiv:1409.1556.
 
