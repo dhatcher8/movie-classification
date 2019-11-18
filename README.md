@@ -105,6 +105,14 @@ The final layer uses `sigmoid` to produce a 20-element vector (for the 20 differ
 
 Finally our model is optimized using Tensorflow's Adam Optimization algorithm, which is an extention of stochastic gradient decent, for reasons including speed of processing, more intuitive interpretation of the hyper-parameters, noise reduction, to name a few. The results of our model is shown as follows: -------SHOW RESULTS AND FINE TUNING-------
 
+# Analysis and Discussion
+
+# Conclusion
+
+After analyzing our results, we were able to make significant progress on top of other attempts at solving the same problem. The size of our dataset gave us more information to work with, which led to more accurate classifications. But our convolutional neural network was also different than any we've seen thus far. ---EXPLAIN HOW OURS IS DIFFERENT---. Our model classifies a genre correctly 9 out of 10 times, which is very good considering we are using multiple genres per movie.
+
+The reason our solution is important is because it has a implication for real world use. It provides evidence that there are certain features that are associated with different genres, and with that, different emotions. This is very valuable information for designers aiming to attract the correct target audience by appealing to their emotions. In the future, this tool could be slightly modified to grade how well a movie poster defines its movie, which could help movie advertisers as a whole. Aside from that fact, this classification could further be broadened to classify genres of not only movies based on posters but possibly even the genres of movies based on scenes within the movie, or music genre based on album cover. The practical applications for this type of model is a wide pool of uses, not necessarily related to movie or genre, and we're excited to see how it can be used in the future.
+
 # References
 
 [1] Simonyan, Karen, and Andrew Zisserman. “Very Deep Convolutional Networks for Large-Scale Image Recognition.” Sept. 2014, arXiv:1409.1556.
