@@ -61,6 +61,41 @@ Because we were still working with over 40,000 images, we knew that obtaining th
 
 Understanding what we knew about locally hosting images, in terms of overall time and space complexity, we had to decide on the proper size for images. Our poster paths were url extenstions that accessed images from TMDB's web server. Using TMDB's api, we found that we could pass in a few different values in our url parameters and get different size images. After discussing as a group, we agreed that the larger the image, the marginal increase in information is much lower than the marginal time and space required to compensate that large image. Thus we went with the smallest poster image, that still gave clear and distinguishable shapes, settling upon images with a width of 185 pixels for each image. 
 
-During our poster collection process, it came to our attention that there wasn't a standard height for the images that we were collecting. This could cause problems in our convolutional neural network, because a standard size is required for the model, and even if it wasn't, non standard data could throw off the results of our filtering in our convolutional layers. Thus, we decided in order to standardized our images, we would compress each image such that it's height was also 185 pixels. This way, shapes and details were still being captured similarly accross posters and it shouldn't affect the performance of our network. To compress the images, we used a load image function that is a part of the tensorflow keras image preprocessing library. This function uses a nearest neighbor interpolation strategy that replaces a group of pixels with a single pixel based on neighboring pixels and the ratio of the new size to the original size. With our newly sized 185x185 images, we realized that any further dimensionality reduction was unnessesary and could be harmful to the accuracy of our model. We now had a 4D array of an approximate size (40000, 185, 185, 3) to use for our training. 
+During our poster collection process, it came to our attention that there wasn't a standard height for the images that we were collecting. This could cause problems in our convolutional neural network, because a standard size is required for the model, and even if it wasn't, non standard data could throw off the results of our filtering in our convolutional layers. Thus, we decided in order to standardized our images, we would compress each image such that it's height was also 185 pixels. This way, shapes and details were still being captured similarly accross posters and it shouldn't affect the performance of our network. To compress the images, we used a load image function that is a part of the tensorflow keras image preprocessing library. This function uses a nearest neighbor interpolation strategy that replaces a group of pixels with a single pixel based on neighboring pixels and the ratio of the new size to the original size. With our newly sized 185x185 images, we realized that any further dimensionality reduction was unnessesary and could be harmful to the accuracy of our model. We now had a 4D array of an approximate size (40000, 185, 185, 3) to use for our training, of which we split our 
 
 ![ExamplePlot](dataset/images/ImagePlotExample.png)
+
+# Building the Convolutional Neural Network
+
+Using Google's Tensorflow, we were able to build our neural network by supplying it the parameters we desired for our model. We decided to follow the structure of the Oxford Visual Geometry Group (VGG), as it is proven to have effective for image classfication, most notably winning ImageNet's [Large Scale Visual Recognition Challenge](http://image-net.org/challenges/LSVRC/2014/results). The structure was obtained through a reigourous evalutaions of netowrks of increasing depth, showing that siginificant improvements can be seen by increasing the depth to 16-19 layers and using very small 3x3x1 filters for all convolutional layers to reduce the number of parameters. 
+
+Although we did not use their model as our framework, we built a Sequential model following the VGG-type structure, with the same filter sizes followed by a max pooling layer, which we repeated with doubling the number of filters when each layer was added. Additional parameters we believed to be appropriate based on the VGG structure and other research included the use of the Rectified Linear Unit as activation, for all layers except the final one to avoid saturation (an issue when using the sigmoid function, a nonlinear activation function). 
+
+`model = Sequential()
+model.add(Conv2D(16, (3,3), activation='relu', input_shape = X_train[0].shape))
+model.add(BatchNormalization())
+model.add(MaxPool2D(2,2))
+model.add(Dropout(0.3))
+
+model.add(Conv2D(32, (3,3), activation='relu'))
+model.add(BatchNormalization())
+model.add(MaxPool2D(2,2))
+model.add(Dropout(0.3))
+
+model.add(Conv2D(64, (3,3), activation='relu'))
+model.add(BatchNormalization())
+model.add(MaxPool2D(2,2))
+model.add(Dropout(0.4))
+.
+.
+.
+.
+.
+model.add(Dense(20, activation='sigmoid'))`
+
+
+The final layer uses `sigmoid` to produce a 20-element vector (for the 20 different genres) with prediction values ranging from 0 to 1 for each output class. This is prefered to the  `softmax activation` function as we have a multi-label classifier not a multi class classifier. 
+
+Finally our model is optimized using Tensorflow's Adam Optimization algorithm, which is an extention of stochastic gradient decent, for reasons including speed of processing, more intuitive interpretation of the hyper-parameters, noise reduction, to name a few. The results of our model is shown as follows: -------SHOW RESULTS AND FINE TUNING-------
+
+
