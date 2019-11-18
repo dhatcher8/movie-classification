@@ -167,6 +167,29 @@ As seen above, we ran tests on multiple different models to determine what the b
 
 After all of our trials, it seemed as if the more we strayed from our original model, the worse the loss became, while the accuracy failed to get any better. We found that adding more filters didn't positively impact our model, while decreasing the number of filters didn't negatively impact our model. Based on this, we are fairly confident that most of the genre determination can be made from the more basic and vague shapes instead of the more specific details. Knowing this could be very helpful in the future when deciding whether the space/time tradeoff is worth it when considering adding more filters to a network similar to ours. This information could also be used to hypothesize about how feeling is actually conveyed through images. In our testing, we also found that adding additional layers did little to help us, and after a certain point, more epochs were no longer helpful either. The one model that we saw might have potentioal was the original model but using a filter size of 5x5 instead of 3x3. Though this was an unexpected development, we decided to run with it as very few other models use 5x5 filters in this type of classification. 
 
+## Evaluation of our approach with F-beta
+
+Since our dataset does not have a balanced number of examples of each class, as shown in the Approach, nor do we perform binary or multi-class classification, an appropriate measure of the accuracy of our results was deemed to be the F-beta metric. This is related to the F1 score/measure, in which the average of recall and precision is calculated to find the harmonic mean. This is the prefered method of evaluating performance of an imbalanced dataset.
+
+THe idea of postive and negative classes (for correct/incorrect model predictions) only make sense for a binary classification problem, and thus we need to introduce wieghts to how important recall is in comparison to precision, in that each class is compared in a one vs. all others manner. 
+
+![Fbeta](dataset/images/Fbetaformula.png)
+
+A common weight that is used for these problems is 2, in which recall is valued twice as highly as precision. As we also care more about recall, we will also set `beta = 2` since we want the model to be as accurate is possible. Thus we are looking for F-beta around 1 for our model, to reach the harmonic mean. 
+
+The results of the tests are as follows:
+
+|Trial Specifications| F-beta Value|
+| --- | --- |
+| 5 Epochs, 4 layers, softmax activation | 0.890 |
+| 5 Epochs, 5 layers, sigmoid activation | 0.844 |
+| 5 Epochs, 4 layers, sigmoid activation | 0.890 |
+| 10 Epochs, 4 layers, sigmoid activation | 0.895 |
+| 5 Epochs, 4 layers, adamax optimization | 0.838 |
+
+From the example of results above, we can see that the big factors of change were increasing the number of epochs and remaining with the sigmoid activation, which worked better for multi-label classification models. This can be taken a step further by changing the beta values for similar testing.
+
+
 # Final Results
 
 Running with what seemed to be our best model from testing, we wanted to train the same model with a larger dataset. By doing this we were hoping that an increased number of movie data would produce a better training set, and in turn would increase our prediction accuracy.
