@@ -63,7 +63,7 @@ Understanding what we knew about locally hosting images, in terms of overall tim
 
 During our poster collection process, it came to our attention that there wasn't a standard height for the images that we were collecting. This could cause problems in our convolutional neural network, because a standard size is required for the model, and even if it wasn't, non standard data could throw off the results of our filtering in our convolutional layers. Thus, we decided in order to standardized our images, we would compress each image such that it's height was also 185 pixels. This way, shapes and details were still being captured similarly accross posters and it shouldn't affect the performance of our network. To compress the images, we used a load image function that is a part of the tensorflow keras image preprocessing library. This function uses a nearest neighbor interpolation strategy that replaces a group of pixels with a single pixel based on neighboring pixels and the ratio of the new size to the original size. With our newly sized 185x185 images, we realized that any further dimensionality reduction was unnessesary and could be harmful to the accuracy of our model. We now had a 4D array of an approximate size (40000, 185, 185, 3) to use for our training, of which we split our 
 
-![ExamplePlot](dataset/images/ImagePlotExample.png)
+![ExamplePlot](dataset/images/ImagePlotExample.png)           ![ConvolutionalLayer](dataset/images/convolutionalLayer.png) 
 
 # Building the Convolutional Neural Network
 
