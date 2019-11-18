@@ -10,7 +10,13 @@ Movie posters can provide a lot of information for people going to see movies. A
 
 # Approach Overview
 
-Our goal in this project was to create a supervised learning model that would accurately classify a movie's genre based on its poster. In order to do this, we needed to obtain genre classification and poster images for a significant amount of movies. We found a dataset of movie data that was harvested from TMDB and from that large dataset, we preprocessed the data to cut away unnecessary information and to fit the parameters of our model. From our preprocessed data, we created a smaller subset of the data in order to test potential models with efficiency. After extensive research, it was clear that convolutional neural networks are the most used and effective supervised learning technique for classify images. Finding this, we decided to create a cnn and then run experiments changing a single variable at a time to hone in on the overall most efficient and accurate classification model. Our final convolutional neural network is a -------------------------------------- ** EXPLANATION OF FINAL MODEL HERE ** ----------------------------------------
+Our goal in this project was to create a supervised learning model that would accurately classify a movie's genre based on its poster. In order to do this, we needed to obtain genre classification and poster images for a significant amount of movies. We found a dataset of movie data that was harvested from TMDB and from that large dataset, we preprocessed the data to cut away unnecessary information and to fit the parameters of our model. From our preprocessed data, we created a smaller subset of the data in order to test potential models with efficiency. After extensive research, it was clear that convolutional neural networks are the most used and effective supervised learning technique for classify images. Other methods including dimensionality reduction algorithms like PCA were found to have certain pitfalls when dealing with data like ours in which there is a high likelyhood that our dataset will be imbalanced with more of genres like drama and comedy than western films. Implementing these methods would train the model to find those genres better, rather than being a good classifier for all genres.
+
+
+
+
+
+Finding this, we decided to create a cnn and then run experiments changing a single variable at a time to hone in on the overall most efficient and accurate classification model.
 
 # Data Collection
 
@@ -61,13 +67,9 @@ Because we were still working with over 40,000 images, we knew that obtaining th
 
 Understanding what we knew about locally hosting images, in terms of overall time and space complexity, we had to decide on the proper size for images. Our poster paths were url extenstions that accessed images from TMDB's web server. Using TMDB's api, we found that we could pass in a few different values in our url parameters and get different size images. After discussing as a group, we agreed that the larger the image, the marginal increase in information is much lower than the marginal time and space required to compensate that large image. Thus we went with the smallest poster image, that still gave clear and distinguishable shapes, settling upon images with a width of 185 pixels for each image. 
 
-During our poster collection process, it came to our attention that there wasn't a standard height for the images that we were collecting. This could cause problems in our convolutional neural network, because a standard size is required for the model, and even if it wasn't, non standard data could throw off the results of our filtering in our convolutional layers. Thus, we decided in order to standardized our images, we would compress each image such that it's height was also 185 pixels. 
+During our poster collection process, it came to our attention that there wasn't a standard height for the images that we were collecting. This could cause problems in our convolutional neural network, because a standard size is required for the model, and even if it wasn't, non standard data could throw off the results of our filtering in our convolutional layers. Thus, we decided in order to standardized our images, we would compress each image such that it's height was also 185 pixels. This way, shapes and details were still being captured similarly accross posters and it shouldn't affect the performance of our network. To compress the images, we used a load image function that is a part of the tensorflow keras image preprocessing library. This function uses a nearest neighbor interpolation strategy that replaces a group of pixels with a single pixel based on neighboring pixels and the ratio of the new size to the original size. With our newly sized 185x185 images, we realized that any further dimensionality reduction was unnessesary and could be harmful to the accuracy of our model. We now had a 4D array of an approximate size (40000, 185, 185, 3) to use for our training, of which we split our 
 
 ![ExamplePlot](dataset/images/ImagePlotExample.png)
-
-This way, shapes and details were still being captured similarly accross posters and it shouldn't affect the performance of our network. To compress the images, we used a load image function that is a part of the tensorflow keras image preprocessing library. This function uses a nearest neighbor interpolation strategy that replaces a group of pixels with a single pixel based on neighboring pixels and the ratio of the new size to the original size. With our newly sized 185x185 images, we realized that any further dimensionality reduction was unnessesary and could be harmful to the accuracy of our model. We now had a 4D array of an approximate size (40000, 185, 185, 3) to use for our training, of which we split our 
-
-![ConvolutionalLayer](dataset/images/convolutionalLayer.png) 
 
 # Building the Convolutional Neural Network
 
@@ -109,7 +111,7 @@ The final layer uses `sigmoid` to produce a 20-element vector (for the 20 differ
 
 ![CNNGraphic](dataset/images/CNNmodel.jpeg)
 
-Finally our model is optimized using Tensorflow's Adam Optimization algorithm, which is an extention of stochastic gradient decent, for reasons including speed of processing, more intuitive interpretation of the hyper-parameters, noise reduction, to name a few. The results of our model is shown as follows: -------SHOW RESULTS AND FINE TUNING-------
+Finally our model is optimized using Tensorflow's Adam Optimization algorithm, which is an extention of stochastic gradient decent, for reasons including speed of processing, more intuitive interpretation of the hyper-parameters, noise reduction, to name a few. 
 
 # Analysis and Discussion
 
@@ -117,11 +119,13 @@ talk about our results and what they mean
 
 talk about how we could have gotten better results (had a lot of certain types of genres, etc)
 
-![MoviesPerGenre](dataset/images/MoviesPerGenre.jpg)
-
 # Conclusion
 
-After analyzing our results, we were able to make significant progress on top of other attempts at solving the same problem. The size of our dataset gave us more information to work with, which led to more accurate classifications. But our convolutional neural network was also different than any we've seen thus far. ---EXPLAIN HOW OURS IS DIFFERENT---. Our model classifies a genre correctly 9 out of 10 times, which is very good considering we are using multiple genres per movie.
+After analyzing our results, we were able to make significant progress on top of other attempts at solving the same problem. The size of our dataset gave us more information to work with, which led to more accurate classifications. But our convolutional neural network was also different than any we've seen thus far. 
+
+--Add more about why our model is different--
+
+By intially following the VGG type structure, we were able to build off of an already great classifier. We took characteristics of that type of model and changing parameters we felt could yield better outcomes, and that proved to be the case from the results shown above. Our model classifies a genre correctly 9 out of 10 times, which is very good considering we are using multiple genres per movie.
 
 The reason our solution is important is because it has a implication for real world use. It provides evidence that there are certain features that are associated with different genres, and with that, different emotions. This is very valuable information for designers aiming to attract the correct target audience by appealing to their emotions. In the future, this tool could be slightly modified to grade how well a movie poster defines its movie, which could help movie advertisers as a whole. Aside from that fact, this classification could further be broadened to classify genres of not only movies based on posters but possibly even the genres of movies based on scenes within the movie, or music genre based on album cover. The practical applications for this type of model is a wide pool of uses, not necessarily related to movie or genre, and we're excited to see how it can be used in the future.
 
